@@ -12,6 +12,7 @@
         <p class="mb-4">
             Hazte una cuenta y comparte los links de tus redes sociales
         </p>
+        <a href="https://github.com/JavierGtech/sharing-links" class="btn btn-primary">Vamos</a>
 
         <!-- Buttons with DaisyUI classes -->
         <div class="space-x-4 mt-8">
