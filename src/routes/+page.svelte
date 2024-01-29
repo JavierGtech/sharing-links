@@ -1,4 +1,6 @@
 <script lang="ts">
+    import Autentificate from "$lib/components/Autentificate.svelte";
+    import { user, userData } from "$lib/firebase";
 
 </script>
 
@@ -10,9 +12,18 @@
     <div class="text-center p-4 space-x-4">
         <!-- Short description -->
         <p class="mb-4">
-            Hazte una cuenta y comparte los links de tus redes sociales
+            Hazte una cuenta <a
+                href="/login"
+                class="text-blue-600 hover:text-blue-800 visited:text-purple-600"
+                >como esta</a
+            > y comparte los links de tus redes sociales
         </p>
-        <a href="https://github.com/JavierGtech/sharing-links" class="btn btn-primary">Vamos</a>
+        {#if $user}
+        <a href="/{$userData?.username}" class="btn btn-primary">Mi perfil</a>
+        <a href="/login" class="btn btn-primary">Configurar mi cuenta</a>
+        {:else}
+            <a href="/login" class="btn btn-primary">Vamos</a>
+        {/if}
 
         <!-- Buttons with DaisyUI classes -->
         <div class="space-x-4 mt-8">

@@ -1,5 +1,8 @@
 <script lang="ts">
     import "../app.css";
+    import { user, userData } from "$lib/firebase";
+    $user;
+    $userData;
 </script>
 <svelte:head>
   <title>Conoce tus links</title>
