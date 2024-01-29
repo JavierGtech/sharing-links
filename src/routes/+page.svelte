@@ -12,12 +12,6 @@
         <p class="mb-4">
             Hazte una cuenta y comparte los links de tus redes sociales
         </p>
-        {#if $user}
-        <a href="/{$userData?.username}" class="btn btn-primary">Mi perfil</a>
-        <a href="/login" class="btn btn-primary">Configurar mi cuenta</a>
-        {:else}
-            <a href="https://github.com/JavierGtech/sharing-links" class="btn btn-primary">Vamos</a>
-        {/if}
 
         <!-- Buttons with DaisyUI classes -->
         <div class="space-x-4 mt-8">
