@@ -4,8 +4,6 @@ import type { RequestHandler } from './$types';
 
 export const POST: RequestHandler = async ({ request, cookies }) => {
 
-    console.log('I got here, step 1');
-
     // const { idToken } = await request.json();
 
     // const expiresIn = 60 * 60 * 24 * 5 * 1000; // 5 days
@@ -26,13 +24,15 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 
     try {
         const { idToken } = await request.json();
-        console.log('I got here, step 1.5');
+        
+        console.log('I got here, step 1.51, and this is the idToken: ', idToken);
     
         const expiresIn = 60 * 60 * 24 * 5 * 1000; // 5 days
     
         const decodedIdToken = await adminAuth.verifyIdToken(idToken);
     
         if (new Date().getTime() / 1000 - decodedIdToken.auth_time < 5 * 60) {
+            console.log('I got here, step 1.55');
             const cookie = await adminAuth.createSessionCookie(idToken, { expiresIn });
             const options = { maxAge: expiresIn, httpOnly: true, secure: true, path: '/' };
     
