@@ -4,23 +4,49 @@ import type { RequestHandler } from './$types';
 
 export const POST: RequestHandler = async ({ request, cookies }) => {
 
-    const { idToken } = await request.json();
+    console.log('I got here, step 1');
 
-    const expiresIn = 60 * 60 * 24 * 5 * 1000; // 5 days
+    // const { idToken } = await request.json();
 
-    const decodedIdToken = await adminAuth.verifyIdToken(idToken);
+    // const expiresIn = 60 * 60 * 24 * 5 * 1000; // 5 days
 
-    if (new Date().getTime() / 1000 - decodedIdToken.auth_time < 5 * 60) {
-        const cookie = await adminAuth.createSessionCookie(idToken, { expiresIn });
-        const options = { maxAge: expiresIn, httpOnly: true, secure: true, path: '/' };
+    // const decodedIdToken = await adminAuth.verifyIdToken(idToken);
 
-        cookies.set('__session', cookie, options);
+    // if (new Date().getTime() / 1000 - decodedIdToken.auth_time < 5 * 60) {
+    //     const cookie = await adminAuth.createSessionCookie(idToken, { expiresIn });
+    //     const options = { maxAge: expiresIn, httpOnly: true, secure: true, path: '/' };
 
-        return json({ status: 'signedIn' });
-    } else {
-        throw error(401, 'Recent sign in required!');
+    //     console.log('I got here, step 2, and this is the cookie: ', cookie);
+    //     cookies.set('__session', cookie, options);
+
+    //     return json({ status: 'signedIn' });
+    // } else {
+    //     throw error(401, 'Recent sign in required!');
+    // }
+
+    try {
+        const { idToken } = await request.json();
+    
+        const expiresIn = 60 * 60 * 24 * 5 * 1000; // 5 days
+    
+        const decodedIdToken = await adminAuth.verifyIdToken(idToken);
+    
+        if (new Date().getTime() / 1000 - decodedIdToken.auth_time < 5 * 60) {
+            const cookie = await adminAuth.createSessionCookie(idToken, { expiresIn });
+            const options = { maxAge: expiresIn, httpOnly: true, secure: true, path: '/' };
+    
+            console.log('I got here, step 2, and this is the cookie: ', cookie);
+            cookies.set('__session', cookie, options);
+    
+            return json({ status: 'signedIn' });
+        } else {
+            throw error(401, 'Recent sign in required!');
+        }
+    } catch (err: any) {
+        console.error(err);
+        // Handle error here, for example, you might want to return a response with an error status code and message
+        return json({ status: 'error', message: err.message });
     }
-
 
 };
 
