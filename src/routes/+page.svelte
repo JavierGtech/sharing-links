@@ -13,7 +13,7 @@
         <!-- Short description -->
         <p class="mb-4">
             Hazte una cuenta <a
-                href="/login"
+                href="/JaviReigosa"
                 class="text-blue-600 hover:text-blue-800 visited:text-purple-600"
                 >como esta</a
             > y comparte los links de tus redes sociales
@@ -29,15 +29,18 @@
         <div class="space-x-4 mt-8">
             <!-- Short description -->
             <p class="mb-4 text-xs">
-                Si encuentras algún problema, ¡dímelo!
-                javigonzalezreigosa@gmail.com
+                Si encuentras algún problema 👉🏼 dínoslo en GitHub:
             </p>
         </div>
         <a href="https://kit.svelte.dev" class="btn btn-neutral btn-xs">
             Docs SvelteKit</a
         >
+        <a href="https://github.com/JavierGtech/sharing-links" class="btn btn-neutral btn-xs">
+            GitHub</a
+        >
         <a href="https://fireship.io/" class="btn btn-neutral btn-xs">
             Fireship Website</a
         >
+        
     </div>
 </div>
