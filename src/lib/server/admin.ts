@@ -4,6 +4,7 @@ import { FB_PROJECT_ID, FB_CLIENT_EMAIL, FB_PRIVATE_KEY } from '$env/static/priv
 import pkg from 'firebase-admin'
 
 try {
+    console.log('Firebase Admin Started')
     pkg.initializeApp({
         credential: pkg.credential.cert({
             projectId: FB_PROJECT_ID,
@@ -12,6 +13,7 @@ try {
         })
 
     });
+    console.log('Firebase Admin Initialized')
 } catch (err: any) {
     if(!/already exists/u.test(err.message)){
         console.error('Firebase Admin Error: ', err.stack)
